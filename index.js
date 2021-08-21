@@ -4,7 +4,7 @@ const nodemailer = require("nodemailer");
 
 // serve your css as static
 app.use(express.static(__dirname));
-app.use(express.json());
+app.use(express.urlencoded({ extended: true}));
 
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/index.html");
@@ -42,7 +42,7 @@ app.post("/", (req, res) => {
       }
       main().catch(e => console.log(e))
     console.log("is it sending")
-    res.json("Thank you for subscribing");
+    res.json("Thank you for Contacting us. We will get back to you shortly");
   });
 
 app.listen(process.env.PORT || 3000, () => {
